@@ -97,8 +97,8 @@ public class Main {
         return null;
     }
 
-    public static String readPeriodicityType(Periodicity periodicity) {
-        switch (periodicity){
+    public static String readPeriodicityType(PeriodicityType periodicityType) {
+        switch (periodicityType){
             case SINGLE: return "Одиночная задача";
             case DAILY: return "Ежедневная задача";
             case WEEKLY: return "Еженедельная задача";
@@ -127,15 +127,15 @@ public class Main {
         String description = readString("Введите описание задачи: ", scanner);
         LocalDateTime taskDateTime = readTaskDateTime(scanner);
         TaskType taskType = readType(scanner);
-        Periodicity periodicity = readPeriodicity(scanner);
+        PeriodicityType periodicityType = readPeriodicity(scanner);
     }
 
     private static void removeTask(Scanner scanner) {
         while (true) {
             try {
-                System.out.println("Выберите, какую задачу хотите удалить:");
-                String idLine = scanner.nextLine();
-                int id = Integer.parseInt(idLine);
+                System.out.println("Какую задачу хотите удалить?");
+                String idString = scanner.nextLine();
+                int id = Integer.parseInt(idString);
                 SERVICE.removeTask(id);
                 break;
             } catch (NumberFormatException e) {
@@ -164,17 +164,17 @@ public class Main {
         }
     }
 
-    private static Periodicity readPeriodicity(Scanner scanner) {
+    private static PeriodicityType readPeriodicity(Scanner scanner) {
         while (true) {
             try {
                 System.out.println("Выберите тип повторяемости задачи: ");
-                for (Periodicity periodicity : Periodicity.values()) {
-                    System.out.println(periodicity.ordinal() + readPeriodicityType(periodicity));
+                for (PeriodicityType periodicityType : PeriodicityType.values()) {
+                    System.out.println(periodicityType.ordinal() + readPeriodicityType(periodicityType));
                 }
                 System.out.println("Введите тип задачи: ");
                 String ordinalLine = scanner.nextLine();
                 int ordinal = Integer.parseInt(ordinalLine);
-                return Periodicity.values()[ordinal];
+                return PeriodicityType.values()[ordinal];
             } catch (NumberFormatException e) {
                 System.out.println("Неверный номер типа задачи");
             } catch (ArrayIndexOutOfBoundsException e) {

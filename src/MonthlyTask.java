@@ -3,8 +3,9 @@ import java.time.LocalDateTime;
 
 public class MonthlyTask extends Task {
 
-    public MonthlyTask(String taskName, String description, TaskType taskType, LocalDateTime taskDateTime) {
-        super(taskName, description, taskType, taskDateTime);
+
+    public MonthlyTask(String taskName, String description, TaskType taskType, LocalDateTime taskDateTime, PeriodicityType periodicityType) {
+        super(taskName, description, taskType, taskDateTime, periodicityType.MONTHLY);
     }
 
     @Override
@@ -14,8 +15,8 @@ public class MonthlyTask extends Task {
     }
 
     @Override
-    public Periodicity getPeriodicityType() {
-        return Periodicity.MONTHLY;
+    public PeriodicityType getPeriodicityType() {
+        return PeriodicityType.MONTHLY;
     }
 }
 

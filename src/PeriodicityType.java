@@ -1,4 +1,4 @@
-public enum Periodicity {
+public enum PeriodicityType {
     SINGLE,
     DAILY,
     WEEKLY,

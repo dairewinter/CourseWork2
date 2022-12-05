@@ -2,8 +2,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class DailyTask extends Task {
-    public DailyTask(String taskName, String description, TaskType taskType, LocalDateTime taskDateTime) {
-        super(taskName, description, taskType, taskDateTime);
+
+
+    public DailyTask(String taskName, String description, TaskType taskType, LocalDateTime taskDateTime, PeriodicityType periodicityType) {
+        super(taskName, description, taskType, taskDateTime, periodicityType.DAILY);
     }
 
     @Override
@@ -13,8 +15,8 @@ public class DailyTask extends Task {
     }
 
     @Override
-    public Periodicity getPeriodicityType() {
-        return Periodicity.DAILY;
+    public PeriodicityType getPeriodicityType() {
+        return PeriodicityType.DAILY;
     }
 
 
